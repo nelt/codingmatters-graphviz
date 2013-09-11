@@ -49,6 +49,39 @@ public class AttributeListTest {
 
         assertEquals("name = 12.01", this.formatter.formatted());
     }
+    
+    @Test
+    public void testNegativeDouble() throws Exception {
+        double value = -12.01;
+        AttributeList attributes = new AttributeList()
+                .attribute("name", value)
+                ;
+        attributes.format(this.formatter);
+
+        assertEquals("name = -12.01", this.formatter.formatted());
+    }
+    
+    @Test
+    public void testInt() throws Exception {
+        int value = 12;
+        AttributeList attributes = new AttributeList()
+                .attribute("name", value)
+                ;
+        attributes.format(this.formatter);
+
+        assertEquals("name = 12", this.formatter.formatted());
+    }
+
+    @Test
+    public void testNegativeInt() throws Exception {
+        int value = -12;
+        AttributeList attributes = new AttributeList()
+                .attribute("name", value)
+                ;
+        attributes.format(this.formatter);
+
+        assertEquals("name = -12", this.formatter.formatted());
+    }
 
     @Test
     public void testMultiple() throws Exception {
@@ -59,5 +92,24 @@ public class AttributeListTest {
         attributes.format(this.formatter);
 
         assertEquals("name1 = value1, name2 = value2", this.formatter.formatted());
+    }
+
+    @Test
+    public void testProtectedValue() throws Exception {
+        AttributeList attributes = new AttributeList()
+                .attribute("name", "with space")
+                ;
+        attributes.format(this.formatter);
+        
+        assertEquals("name = \"with space\"", this.formatter.formatted());
+    }
+    @Test
+    public void testProtectedValueWithEscape() throws Exception {
+        AttributeList attributes = new AttributeList()
+                .attribute("name", "with \" and space")
+                ;
+        attributes.format(this.formatter);
+        
+        assertEquals("name = \"with \\\" and space\"", this.formatter.formatted());
     }
 }

@@ -21,7 +21,7 @@ public class GraphAttributeTest {
 
         assertEquals(
                 "graph G {\n" +
-                "\tgraph [charset = UTF-8];\n" +
+                "\tgraph [charset = \"UTF-8\"];\n" +
                 "}", 
                 graph.asDot());
     }
@@ -34,7 +34,7 @@ public class GraphAttributeTest {
 
         assertEquals(
                 "graph G {\n" +
-                        "\tedge [URL = http://www.codingmatters.org];\n" +
+                        "\tedge [URL = \"http://www.codingmatters.org\"];\n" +
                         "}",
                 graph.asDot());
     }
@@ -47,7 +47,7 @@ public class GraphAttributeTest {
 
         assertEquals(
                 "graph G {\n" +
-                        "\tnode [URL = http://www.codingmatters.org];\n" +
+                        "\tnode [URL = \"http://www.codingmatters.org\"];\n" +
                         "}",
                 graph.asDot());
     }

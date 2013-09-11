@@ -37,6 +37,13 @@ public class GalleryUsageTest {
                 this.read("data-structures.dot"), 
                 new DataStructures(new String[0]).graph().asDot());
     }
+    
+    @Test
+    public void testGeneticProgramming() throws Exception {
+        assertEquals(
+                this.read("genetic-programming.dot"), 
+                new GeneticProgramming(new String[0]).graph().asDot());
+    }
 
     private String read(String dot) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("gallery/" + dot)))) {

@@ -23,9 +23,30 @@ public class AttributeList {
             } else {
                 result.append(", ");
             }
-            result.append(name).append(" = ").append(this.attributes.get(name));
+            result.append(name).append(" = ").append(this.protect(this.attributes.get(name)));
         }
         formatter.append(result.toString());
+    }
+
+    private String protect(String value) {
+        if(value.equals("")) return value;
+        if(this.isIdentifier(value) || this.isNumeral(value)) {
+            return value;
+        } else {
+            return this.quote(value);
+        }
+    }
+
+    private String quote(String value) {
+        return "\"" + value.replaceAll("\"", "\\\\\"") + "\"";
+    }
+
+    private boolean isIdentifier(String value) {
+        return value.matches("[a-zA-Z_][a-zA-Z0-9_]*");
+    }
+    private boolean isNumeral(String value) {
+        //  [-]?(.[0-9]+ | [0-9]+(.[0-9]*)? )
+        return value.matches("-?[0-9]+.[0-9]*");
     }
 
     public AttributeList attribute(String name, String value) {

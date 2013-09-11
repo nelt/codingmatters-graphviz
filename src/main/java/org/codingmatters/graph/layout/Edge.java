@@ -20,8 +20,12 @@ public class Edge {
         this.attributes = attributes;
     }
 
-    public void format(IndentedFormatter formatter) {
-        formatter.append(this.left + "->" + this.right);
+    public void format(IndentedFormatter formatter, boolean directed) {
+        if(directed) {
+            formatter.append(this.left + "->" + this.right);
+        } else {
+            formatter.append(this.left + "--" + this.right);
+        }
         this.formatAttributes(formatter);
         formatter.append(";").newLine();
     }

@@ -18,7 +18,8 @@ public class TestDotFiles {
 //        new HelloWorld(args).generateDotFile(new File(testGallery, "hello-world.dot"));
 //        new Cluster(args).generateDotFile(new File(testGallery, "cluster.dot"));
 //        new DataStructures(args).generateDotFile(new File(testGallery, "data-structures.dot"));
-        new FiniteAutomaton(args).generateDotFile(new File(testGallery, "finite-automaton.dot"));
+//        new FiniteAutomaton(args).generateDotFile(new File(testGallery, "finite-automaton.dot"));
+//        new GeneticProgramming(args).generateDotFile(new File(testGallery, "genetic-programming.dot"));
     }
     
 }

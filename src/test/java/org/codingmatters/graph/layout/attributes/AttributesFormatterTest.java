@@ -29,13 +29,13 @@ public class AttributesFormatterTest {
     @Test
     public void testAspectWithPasses() throws Exception {
         Attributes.graph().aspect(12.0, 5).append(this.formatter);
-        Assert.assertEquals("aspect = 12.0, 5", this.formatter.formatted());
+        Assert.assertEquals("aspect = \"12.0, 5\"", this.formatter.formatted());
     }
     
     @Test
     public void testBoundingBox() throws Exception {
         Attributes.graph().boundingBox(0, 1, 2, 3).append(this.formatter);
-        Assert.assertEquals("bb = 0,1,2,3", this.formatter.formatted());
+        Assert.assertEquals("bb = \"0,1,2,3\"", this.formatter.formatted());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class AttributesFormatterTest {
     @Test
     public void testBackgroundGradiant() throws Exception {
         Attributes.graph().backgroundGradient(WeightedColors.list(WeightedColors.weighted(Color.named("blue"), 0.3f), WeightedColors.weighted(Color.named("yellow")))).append(this.formatter);
-        Assert.assertEquals("bgcolor = blue;0.3:yellow", this.formatter.formatted());
+        Assert.assertEquals("bgcolor = \"blue;0.3:yellow\"", this.formatter.formatted());
     }
 
     @Test
@@ -117,13 +117,13 @@ public class AttributesFormatterTest {
     @Test
     public void testLayers() throws Exception {
         Attributes.graph().layers("a", "b", "c").append(this.formatter);
-        Assert.assertEquals("layers = a:b:c", this.formatter.formatted());
+        Assert.assertEquals("layers = \"a:b:c\"", this.formatter.formatted());
     }
 
     @Test
     public void testSelectedLayers() throws Exception {
         Attributes.graph().selectedLayers("a", "b").append(this.formatter);
-        Assert.assertEquals("layerselect = a:b", this.formatter.formatted());
+        Assert.assertEquals("layerselect = \"a:b\"", this.formatter.formatted());
     }
     
     

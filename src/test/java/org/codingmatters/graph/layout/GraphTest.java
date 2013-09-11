@@ -45,7 +45,7 @@ public class GraphTest {
     }
 
     @Test
-    public void testEdges() throws Exception {
+    public void testDirectedEdges() throws Exception {
         Graph graph = new Graph("G")
                 .directed()
                 .edge("One", "Two")
@@ -60,13 +60,27 @@ public class GraphTest {
     }
 
     @Test
+    public void testUndirectedEdges() throws Exception {
+        Graph graph = new Graph("G")
+                .edge("One", "Two")
+                .edge("Three", "Two")
+                ;
+        assertEquals(
+                "graph G {\n" +
+                        "\tOne--Two;\n" +
+                        "\tThree--Two;\n" +
+                        "}",
+                graph.asDot());
+    }
+
+    @Test
     public void testEdgeWithAttributes() throws Exception {
         Graph graph = new Graph("G").directed()
                 .edge("One", "Two", Attributes.edge().label("one to two"))
                 ;
         assertEquals(
                 "digraph G {\n" +
-                        "\tOne->Two [label = one to two];\n" +
+                        "\tOne->Two [label = \"one to two\"];\n" +
                         "}",
                 graph.asDot());
     }
@@ -93,7 +107,7 @@ public class GraphTest {
                 ;
         assertEquals(
                 "digraph G {\n" +
-                        "\tn [label = The Node];\n" +
+                        "\tn [label = \"The Node\"];\n" +
                         "}",
                 graph.asDot());
     }

@@ -18,6 +18,7 @@ import java.util.List;
 public class Graph {
     private final String id;
     private GraphType type = GraphType.GRAPH;
+    private boolean directed = false;
     private final List<Node> nodes = new ArrayList<>();
     private final List<Edge> edges = new ArrayList<>();
     private final List<Graph> subgraphs = new ArrayList<>();
@@ -31,6 +32,7 @@ public class Graph {
     
     public Graph directed() {
         this.type = GraphType.DIGRAPH;
+        this.directed = true;
         return this;
     }
 
@@ -71,11 +73,11 @@ public class Graph {
 
     public String asDot() {
         IndentedFormatter result = new IndentedFormatter();
-        this.format(result);
+        this.format(result, this.directed);
         return result.formatted();
     }
 
-    private void format(IndentedFormatter formatter) {
+    private void format(IndentedFormatter formatter, boolean directed) {
         formatter.line("%s %s {", this.type.token(), this.id);
 
         this.formatAttributes("graph", this.graphAttributes, formatter);
@@ -84,7 +86,7 @@ public class Graph {
         
         this.formatSubgraphs(formatter);
         this.formatNodes(formatter);
-        this.formatEdges(formatter);
+        this.formatEdges(formatter, directed);
 
         formatter.line("}");
     }
@@ -100,15 +102,15 @@ public class Graph {
     private void formatSubgraphs(IndentedFormatter formatter) {
         for (Graph subgraph : this.subgraphs) {
             formatter.indent();
-            subgraph.format(formatter);
+            subgraph.format(formatter, this.directed);
             formatter.unindent();
         }
     }
 
-    private void formatEdges(IndentedFormatter formatter) {
+    private void formatEdges(IndentedFormatter formatter, boolean directed) {
         for (Edge edge : this.edges) {
             formatter.indent();
-            edge.format(formatter);
+            edge.format(formatter, directed);
             formatter.unindent();
         }
     }

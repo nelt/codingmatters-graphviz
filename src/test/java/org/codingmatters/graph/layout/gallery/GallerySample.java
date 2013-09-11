@@ -21,6 +21,7 @@ public abstract class GallerySample {
         Cluster.main(args);
         DataStructures.main(args);
         FiniteAutomaton.main(args);
+        GeneticProgramming.main(args);
     }
     
     static public void generate(GallerySample sample, String name) {
@@ -51,6 +52,9 @@ public abstract class GallerySample {
 
 
     public void generateDotFile(File file) throws IOException {
+        if(! file.exists()) {
+            file.createNewFile();
+        }
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(this.graph().asDot());
         }
