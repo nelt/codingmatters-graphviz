@@ -1,0 +1,105 @@
+graph  {
+	graph [label = "((+ (* (X) (- (- (X) (X)) (X))) (% (+ (X) (X)) (COS (- (X) (X))))) (EXP (* (X) (X))) (+ (% (EXP (SIN (+ (X) (X)))) (SIN (* (X) (EXP (* (X) (X)))))) (* (X) (X))) (% (EXP (% (X) (% (X) (X)))) (EXP (SIN (X)))))"];
+	subgraph cluster01 {
+		graph [label = "(+ (* (X) (- (- (X) (X)) (X))) (% (+ (X) (X)) (COS (- (X) (X)))))"];
+		n002 [label = "+"];
+		n003 [label = "*"];
+		n004 [label = X];
+		n005 [label = "-"];
+		n006 [label = "-"];
+		n007 [label = X];
+		n008 [label = X];
+		n009 [label = X];
+		n010 [label = "%"];
+		n011 [label = "+"];
+		n012 [label = X];
+		n013 [label = X];
+		n014 [label = COS];
+		n015 [label = "-"];
+		n016 [label = X];
+		n017 [label = X];
+		n002--n003;
+		n003--n004;
+		n003--n005;
+		n005--n006;
+		n006--n007;
+		n006--n008;
+		n005--n009;
+		n002--n010;
+		n010--n011;
+		n011--n012;
+		n011--n013;
+		n010--n014;
+		n014--n015;
+		n015--n016;
+		n015--n017;
+	}
+	subgraph cluster17 {
+		graph [label = "(EXP (* (X) (X)))"];
+		n018 [label = EXP];
+		n019 [label = "*"];
+		n020 [label = X];
+		n021 [label = X];
+		n018--n019;
+		n019--n020;
+		n019--n021;
+	}
+	subgraph cluster21 {
+		graph [label = "(+ (% (EXP (SIN (+ (X) (X)))) (SIN (* (X) (EXP (* (X) (X)))))) (* (X) (X)))"];
+		n022 [label = "+"];
+		n023 [label = "%"];
+		n024 [label = EXP];
+		n025 [label = SIN];
+		n026 [label = "+"];
+		n027 [label = X];
+		n028 [label = X];
+		n029 [label = SIN];
+		n030 [label = "*"];
+		n031 [label = X];
+		n032 [label = EXP];
+		n033 [label = "*"];
+		n034 [label = X];
+		n035 [label = X];
+		n036 [label = "*"];
+		n037 [label = X];
+		n038 [label = X];
+		n022--n023;
+		n023--n024;
+		n024--n025;
+		n025--n026;
+		n026--n027;
+		n026--n028;
+		n023--n029;
+		n029--n030;
+		n030--n031;
+		n030--n032;
+		n032--n033;
+		n033--n034;
+		n033--n035;
+		n022--n036;
+		n036--n037;
+		n036--n038;
+	}
+	subgraph cluster38 {
+		graph [label = "(% (EXP (% (X) (% (X) (X)))) (EXP (SIN (X))))"];
+		n039 [label = "%"];
+		n040 [label = EXP];
+		n041 [label = "%"];
+		n042 [label = X];
+		n043 [label = "%"];
+		n044 [label = X];
+		n045 [label = X];
+		n046 [label = EXP];
+		n047 [label = SIN];
+		n048 [label = X];
+		n039--n040;
+		n040--n041;
+		n041--n042;
+		n041--n043;
+		n043--n044;
+		n043--n045;
+		n039--n046;
+		n046--n047;
+		n047--n048;
+	}
+}
