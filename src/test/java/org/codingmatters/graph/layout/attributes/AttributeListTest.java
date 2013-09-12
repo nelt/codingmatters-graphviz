@@ -1,5 +1,6 @@
 package org.codingmatters.graph.layout.attributes;
 
+import org.codingmatters.graph.layout.attributes.values.Html;
 import org.codingmatters.graph.layout.formatting.IndentedFormatter;
 import org.junit.Before;
 import org.junit.Test;
@@ -111,5 +112,16 @@ public class AttributeListTest {
         attributes.format(this.formatter);
         
         assertEquals("name = \"with \\\" and space\"", this.formatter.formatted());
+    }
+
+
+    @Test
+    public void testHtmlString() throws Exception {
+        AttributeList attributes = new AttributeList()
+                .attribute("name", Html.string("<table border=\"0\"><tr><td bgcolor=\"black\">&#40;5&#41; r -&gt; &bull;l </td></tr></table>"))
+                ;
+        attributes.format(this.formatter);
+
+        assertEquals("name = <<table border=\"0\"><tr><td bgcolor=\"black\">&#40;5&#41; r -&gt; &bull;l </td></tr></table>>", this.formatter.formatted());
     }
 }

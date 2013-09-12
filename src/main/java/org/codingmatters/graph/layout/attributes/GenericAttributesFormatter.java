@@ -78,8 +78,17 @@ public abstract class GenericAttributesFormatter<B extends GenericAttributesForm
         this.attributes.attribute("color", color.formatted());
         return this.self();
     }
-
     
+    public B fillcolor(Color color) {
+        this.attributes.attribute("fillcolor", color.formatted());
+        return this.self();
+    }
+    
+    public B fillcolor(WeightedColors weightedColors) {
+        this.attributes.attribute("fillcolor", weightedColors.formatted());
+        return this.self();
+    }
+     
     public B backgroundGradient(WeightedColors weightedColors) {
         this.attributes.attribute("bgcolor", weightedColors.formatted());
         return this.self();
@@ -423,6 +432,12 @@ public abstract class GenericAttributesFormatter<B extends GenericAttributesForm
         this.attributes.attribute("overlap", true);
         return this.self();
     }
+
+
+    public B noOverlap() {
+        this.attributes.attribute("overlap", false);
+        return this.self();
+    }
     
     
     public B defaultOverlap() {
@@ -670,18 +685,31 @@ public abstract class GenericAttributesFormatter<B extends GenericAttributesForm
     }
     
     
-    public B style(Style.GraphStyle style) {
-        this.attributes.attribute("style", style.formatted());
-        return this.self();
+    public B style(Style.GraphStyle ... styles) {
+        return this.addStyle(styles);
     }
     
-    public B style(Style.EdgeStyle style) {
-        this.attributes.attribute("style", style.formatted());
-        return this.self();
+    public B style(Style.EdgeStyle ... styles) {
+        return this.addStyle(styles);
     }
     
-    public B style(Style.NodeStyle style) {
-        this.attributes.attribute("style", style.formatted());
+    public B style(Style.NodeStyle ... styles) {
+        return this.addStyle(styles);
+    }
+    
+    private B addStyle(Style ... styles) {
+        if(styles != null) {
+            StringBuilder formatted = new StringBuilder();
+            boolean started = false;
+            for (Style style : styles) {
+                if(started) {
+                    formatted.append(", ");
+                }
+                started = true;
+                formatted.append(style.formatted());
+            }
+            this.attributes.attribute("style", formatted.toString());
+        }
         return this.self();
     }
     
@@ -709,4 +737,9 @@ public abstract class GenericAttributesFormatter<B extends GenericAttributesForm
         return this.self();
     }
 
+    public B penwidth(double width) {
+        this.attributes.attribute("penwidth", width);
+        return this.self();
+    }
+    
 }

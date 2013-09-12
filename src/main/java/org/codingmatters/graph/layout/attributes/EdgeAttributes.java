@@ -3,6 +3,7 @@ package org.codingmatters.graph.layout.attributes;
 import org.codingmatters.graph.layout.attributes.values.Color;
 import org.codingmatters.graph.layout.attributes.values.Point;
 import org.codingmatters.graph.layout.attributes.values.Style;
+import org.codingmatters.graph.layout.attributes.values.WeightedColors;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +24,9 @@ public interface EdgeAttributes extends AttributesFormatter {
     EdgeAttributes labelPosition(Point p);
     EdgeAttributes nojustify(boolean no);
     EdgeAttributes nojustify();
-    EdgeAttributes style(Style.EdgeStyle style);
+    EdgeAttributes style(Style.EdgeStyle ... styles);
     EdgeAttributes target(String target);
-}
+    EdgeAttributes fillcolor(Color color);
+    EdgeAttributes fillcolor(WeightedColors colors);
+    EdgeAttributes penwidth(double width);
+    }

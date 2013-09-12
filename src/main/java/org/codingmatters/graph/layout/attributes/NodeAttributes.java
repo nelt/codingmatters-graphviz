@@ -27,7 +27,10 @@ public interface NodeAttributes extends AttributesFormatter {
     NodeAttributes nojustify();
     NodeAttributes ordering(Ordering ordering);
     NodeAttributes sortv(int sortv);
-    NodeAttributes style(Style.NodeStyle style);
+    NodeAttributes style(Style.NodeStyle ... styles);
     NodeAttributes target(String target);
     NodeAttributes shape(Shape shape);
+    NodeAttributes fillcolor(Color color);
+    NodeAttributes fillcolor(WeightedColors colors);
+    NodeAttributes penwidth(double width);
 }

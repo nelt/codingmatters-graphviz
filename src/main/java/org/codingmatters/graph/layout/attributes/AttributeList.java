@@ -1,8 +1,10 @@
 package org.codingmatters.graph.layout.attributes;
 
+import org.codingmatters.graph.layout.attributes.values.Html;
 import org.codingmatters.graph.layout.formatting.IndentedFormatter;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,6 +14,7 @@ import java.util.HashMap;
  */
 public class AttributeList {
     
+    private final LinkedList<String> ordered = new LinkedList<>();
     private final HashMap<String, String> attributes = new HashMap<>();
 
     public void format(IndentedFormatter formatter) {
@@ -32,9 +35,15 @@ public class AttributeList {
         if(value.equals("")) return value;
         if(this.isIdentifier(value) || this.isNumeral(value)) {
             return value;
+        } else if(this.isHtml(value)) {
+            return "<" + value.substring(Html.DELIMITER.length(), value.length() - Html.DELIMITER.length()) + ">";
         } else {
             return this.quote(value);
         }
+    }
+
+    private boolean isHtml(String value) {
+        return value.startsWith(Html.DELIMITER) && value.endsWith(Html.DELIMITER);
     }
 
     private String quote(String value) {
@@ -50,6 +59,10 @@ public class AttributeList {
     }
 
     public AttributeList attribute(String name, String value) {
+        if(this.ordered.contains(name)) {
+            this.ordered.remove(name);
+        }
+        this.ordered.add(name);
         this.attributes.put(name, value);
         return this;
     }

@@ -8,6 +8,8 @@ package org.codingmatters.graph.layout.attributes.values;
  */
 public interface Style {
     
+    String formatted();
+    
     public static enum GraphStyle implements Style {
         RADIAL("radial"), FILLED("filled")
         ;

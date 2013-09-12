@@ -1,6 +1,7 @@
 package org.codingmatters.graph.layout.gallery;
 
 import org.codingmatters.graph.layout.Graph;
+import org.codingmatters.graph.layout.attributes.EdgeAttributes;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -22,6 +23,7 @@ public abstract class GallerySample {
         DataStructures.main(args);
         FiniteAutomaton.main(args);
         GeneticProgramming.main(args);
+        PSG.main(args);
     }
     
     static public void generate(GallerySample sample, String name) {

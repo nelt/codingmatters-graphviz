@@ -20,6 +20,7 @@ public class TestDotFiles {
 //        new DataStructures(args).generateDotFile(new File(testGallery, "data-structures.dot"));
 //        new FiniteAutomaton(args).generateDotFile(new File(testGallery, "finite-automaton.dot"));
 //        new GeneticProgramming(args).generateDotFile(new File(testGallery, "genetic-programming.dot"));
+//        new PSG(args).generateDotFile(new File(testGallery, "psg.dot"));
     }
     
 }

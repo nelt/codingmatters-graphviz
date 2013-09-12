@@ -39,6 +39,7 @@ public class DataStructures extends GallerySample {
                         .shape(Shape.ELLIPSE)
                 )
                 .edgeAttributes(Attributes.edge())
+                
                 .node("node0", node().label("<f0> 0x10ba8| <f1>").shape(Shape.RECORD))
                 .node("node1", node().label("<f0> 0xf7fc4380| <f1> | <f2> |-1").shape(Shape.RECORD))
                 .node("node2", node().label("<f0> 0xf7fc44b8| | |2").shape(Shape.RECORD))

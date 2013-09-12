@@ -72,6 +72,7 @@ public interface GraphAttributes extends AttributesFormatter {
     GraphAttributes ordering(Ordering ordering);
     GraphAttributes outputOrder(OutputMode mode);
     GraphAttributes overlap();
+    GraphAttributes noOverlap();
     GraphAttributes defaultOverlap();
     GraphAttributes scaleOverlap();
     GraphAttributes prismOverlap();
@@ -113,9 +114,12 @@ public interface GraphAttributes extends AttributesFormatter {
     GraphAttributes splines(SplineType type);
     GraphAttributes start(StartType type, int seed);
     GraphAttributes start(StartType type);
-    GraphAttributes style(Style.GraphStyle style);
+    GraphAttributes style(Style.GraphStyle ... styles);
     GraphAttributes stylesheet(String path);
     GraphAttributes target(String target);
     GraphAttributes trueColor();
     GraphAttributes voroMargin(double size);
+    GraphAttributes fillcolor(Color color);
+    GraphAttributes fillcolor(WeightedColors colors);
+    GraphAttributes penwidth(double width);
 }

@@ -44,6 +44,13 @@ public class GalleryUsageTest {
                 this.read("genetic-programming.dot"), 
                 new GeneticProgramming(new String[0]).graph().asDot());
     }
+    
+    @Test
+    public void testPSG() throws Exception {
+        assertEquals(
+                this.read("psg.dot"), 
+                new PSG(new String[0]).graph().asDot());
+    }
 
     private String read(String dot) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("gallery/" + dot)))) {
